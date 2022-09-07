@@ -6,15 +6,16 @@ function App() {
 	const [wordCount, setWordCount] = useState(0)
 	const [userInput, setUserInput] = useState('')
 
-	function handleClick(event) {
-		event.preventDefault()
+	function handleClick(e) {
+		e.preventDefault()
 		const value = userInput
 		const wordArray = value.split(' ')
 		const wordCount = wordArray.length
 		setWordCount(wordCount)
 	}
 
-	function reset(event) {
+	function reset(e) {
+		e.preventDefault()
 		setUserInput('')
 		setWordCount(0)
 	}
