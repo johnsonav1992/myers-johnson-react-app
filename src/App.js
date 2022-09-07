@@ -8,6 +8,8 @@ function App() {
 
 	function handleClick(e) {
 		e.preventDefault()
+		if (userInput === '') return setWordCount(0)
+
 		const value = userInput
 		const wordArray = value.split(' ')
 		const wordCount = wordArray.length
