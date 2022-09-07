@@ -4,28 +4,34 @@ import Button from './Button'
 
 function App() {
 	const [wordCount, setWordCount] = useState(0)
+	const [userInput, setUserInput] = useState('')
 
 	function handleClick(event) {
-    event.preventDefault();
-    const value = event.target.parentNode[0].value;
-    const wordArray = value.split(" ");
-    const wordCount = wordArray.length;
-    setWordCount(wordCount);
-  }
-  
-  function reset(event) {
-    let value = event.target.parentNode[0].value
-    value = ''
-    setWordCount(0)
-  }
+		event.preventDefault()
+		const value = userInput
+		const wordArray = value.split(' ')
+		const wordCount = wordArray.length
+		setWordCount(wordCount)
+	}
 
+	function reset(event) {
+		setUserInput('')
+		setWordCount(0)
+	}
 
 	return (
 		<div className="App">
 			<h1>Word Counter</h1>
-      <p>Paste in your text below</p>
-			<form type='submit' className='form'>
-				<textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+			<p>Paste in your text below</p>
+			<form type="submit" className="form">
+				<textarea
+					name="textarea"
+					id="textarea"
+					cols="30"
+					rows="10"
+					value={userInput}
+					onChange={e => setUserInput(e.target.value)}
+				></textarea>
 				<Button click={handleClick}>Submit</Button>
 				<Button click={reset}>Reset</Button>
 			</form>
